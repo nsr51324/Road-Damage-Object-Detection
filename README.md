@@ -40,9 +40,7 @@ Road-Damage-Object-Detection
 ├── yolov8n.pt
 ├── yolov10n.pt
 ├── yolo11n.pt
-├── yolo26n.pt
-│
-└── requirements.txt
+└── yolo26n.pt
 ```
 
 ---
@@ -79,8 +77,6 @@ The dataset used for training is available on Hugging Face.
 
 👉 Dataset Repository
 
-https://huggingface.co/datasets/nsr51324/Road_Damage
-
 Original Roboflow Dataset
 
 https://universe.roboflow.com/trafficsignssafeway/road-damage-l1ju7
@@ -95,14 +91,6 @@ Clone the repository
 git clone https://github.com/nsr51324/Road-Damage-Object-Detection.git
 
 cd Road-Damage-Object-Detection
-```
-
-Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
 ---
 
 # 🖥️ Run the Application
@@ -154,10 +142,6 @@ https://github.com/nsr51324/Road-Damage-Object-Detection
 ### Hugging Face Model
 
 https://huggingface.co/nsr51324/Road_Damage_Object_Detection
-
-### Hugging Face Dataset
-
-https://huggingface.co/datasets/nsr51324/Road_Damage
 
 ---
 
