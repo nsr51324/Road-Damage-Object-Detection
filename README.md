@@ -2,69 +2,99 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)]()
 [![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLO-orange)]()
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red)]()
+[![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 
-A computer vision project for **Road Damage Detection** using three generations of the YOLO family (**YOLOv8, YOLOv10, and YOLO11**) trained and evaluated on the same dataset to compare accuracy, speed, and model size.
+Road Damage Object Detection is a Computer Vision project built with **Ultralytics YOLO** for detecting different types of road damage from images.
+
+This repository contains the source code, notebooks, and Gradio interface, while the trained model weights and dataset are hosted separately on Hugging Face.
 
 ---
 
-# 📌 Features
+# 🚀 Features
 
-- Detect multiple types of road damage.
-- Compare YOLOv8, YOLOv10, and YOLO11.
-- Benchmark accuracy, precision, recall, FPS, and model size.
-- Gradio Web Interface.
-- Ready-to-use trained weights.
-- Easy deployment on local machine or Hugging Face Spaces.
-
----
-
-# 📊 Benchmark Results
-
-| Model | mAP50 | mAP50-95 | Precision | Recall | Model Size | FPS |
-|--------|-------|----------|-----------|--------|------------|------|
-| 🥇 YOLOv8n | **0.3936** | **0.2299** | 0.5835 | **0.3952** | 23.36 MB | 269.97 |
-| ⚖️ YOLOv10n | 0.3694 | 0.2173 | **0.5849** | 0.3527 | 5.49 MB | 253.44 |
-| ⚡ YOLO11n | 0.3344 | 0.1905 | 0.5093 | 0.3504 | **5.22 MB** | **272.88** |
+- Road Damage Detection using YOLO
+- Supports YOLOv8, YOLOv10 and YOLO11
+- Modern Gradio User Interface
+- Fast inference
+- Easy deployment
+- Clean project structure
 
 ---
 
 # 📂 Project Structure
 
 ```text
-Road_Damage_Object_Detection/
+Road-Damage-Object-Detection
 │
-├── runs/
-│   ├── detect/
-│   │   ├── yolov8_road/
-│   │   │   └── weights/
-│   │   │       └── best.pt
-│   │   │
-│   │   ├── yolov10_road/
-│   │   │   └── weights/
-│   │   │       └── best.pt
-│   │   │
-│   │   └── yolov11_road/
-│   │       └── weights/
-│   │           └── best.pt
+├── notebooks/
+│
+├── __pycache__/
 │
 ├── UI.py
-├── Road_Damage.ipynb
-├── requirements.txt
-└── README.md
+│
+├── README.md
+│
+├── .gitignore
+│
+├── yolov8n.pt
+├── yolov10n.pt
+├── yolo11n.pt
+├── yolo26n.pt
+│
+└── requirements.txt
 ```
 
 ---
 
-# 🚀 Installation
+# 📊 Model Performance
+
+| Model | mAP50 | mAP50-95 | Precision | Recall | Size | FPS |
+|--------|-------|----------|-----------|--------|------|------|
+| 🥇 YOLOv8n | **0.3936** | **0.2299** | 0.5835 | **0.3952** | 23.36 MB | 269.97 |
+| ⚖️ YOLOv10n | 0.3694 | 0.2173 | **0.5849** | 0.3527 | 5.49 MB | 253.44 |
+| ⚡ YOLO11n | 0.3344 | 0.1905 | 0.5093 | 0.3504 | **5.22 MB** | **272.88** |
+
+---
+
+# 📥 Download Trained Weights
+
+The trained models are hosted on Hugging Face.
+
+👉 **Model Repository**
+
+https://huggingface.co/nsr51324/Road_Damage_Object_Detection
+
+Available checkpoints
+
+- YOLOv8 Best
+- YOLOv10 Best
+- YOLO11 Best
+
+---
+
+# 📁 Dataset
+
+The dataset used for training is available on Hugging Face.
+
+👉 Dataset Repository
+
+https://huggingface.co/datasets/nsr51324/Road_Damage
+
+Original Roboflow Dataset
+
+https://universe.roboflow.com/trafficsignssafeway/road-damage-l1ju7
+
+---
+
+# ⚙️ Installation
 
 Clone the repository
 
 ```bash
-git clone https://github.com/YourUsername/Road_Damage_Object_Detection.git
+git clone https://github.com/nsr51324/Road-Damage-Object-Detection.git
 
-cd Road_Damage_Object_Detection
+cd Road-Damage-Object-Detection
 ```
 
 Install dependencies
@@ -75,117 +105,59 @@ pip install -r requirements.txt
 
 ---
 
-# 📥 Model Weights
+# 🖥️ Run the Application
 
-The trained checkpoints are included in
-
-```text
-runs/detect/
-```
-
-Available models
-
-```
-runs/detect/yolov8_road/weights/best.pt
-
-runs/detect/yolov10_road/weights/best.pt
-
-runs/detect/yolov11_road/weights/best.pt
-```
-
-Load any model
-
-```python
-from ultralytics import YOLO
-
-model = YOLO("runs/detect/yolov8_road/weights/best.pt")
-
-results = model("road.jpg")
-
-results[0].show()
-```
-
----
-
-# 🖥️ Gradio Interface
-
-Run
+Launch the Gradio interface
 
 ```bash
 python UI.py
 ```
 
-Then open
+Open your browser
 
 ```
 http://127.0.0.1:7860
 ```
-
-Features
-
-- Upload Image
-- Detect Road Damage
-- Confidence Score
-- Object Count
-- Annotated Image
-
----
-
-# 📁 Dataset
-
-The project was trained on a Road Damage Dataset exported in YOLO format from Roboflow.
-
-The dataset contains **7 road damage classes**.
-
----
-
-# 🏋️ Training Configuration
-
-- Framework: Ultralytics YOLO
-- Image Size: 640 × 640
-- Batch Size: 16
-- Epochs: 50
-- Optimizer: Default Ultralytics
-- Early Stopping Enabled
-
----
-
-# 📈 Validation
-
-Validation metrics were generated using
-
-```python
-model.val()
-```
-
-Metrics include
-
-- Precision
-- Recall
-- mAP50
-- mAP50-95
-- PR Curve
-- Confusion Matrix
-- FPS
 
 ---
 
 # 💻 Technologies
 
 - Python
-- Ultralytics
+- Ultralytics YOLO
 - PyTorch
 - OpenCV
-- Gradio
 - NumPy
+- Gradio
 
 ---
 
-# ⚠️ Limitations
+# 📈 Training
 
-This project is intended for research and benchmarking purposes.
+All models were trained using the Ultralytics framework.
 
-Performance depends on the quality and diversity of the training dataset. Additional data and larger YOLO models can significantly improve detection accuracy.
+Configuration
+
+- Image Size: 640×640
+- Batch Size: 16
+- Epochs: 50
+- Early Stopping Enabled
+
+---
+
+# 📌 Repository Links
+
+### GitHub
+
+https://github.com/nsr51324/Road-Damage-Object-Detection
+
+### Hugging Face Model
+
+https://huggingface.co/nsr51324/Road_Damage_Object_Detection
+
+### Hugging Face Dataset
+
+https://huggingface.co/datasets/nsr51324/Road_Damage
 
 ---
 
@@ -196,14 +168,11 @@ Performance depends on the quality and diversity of the training dataset. Additi
 AI Engineer
 
 GitHub:
-https://github.com/YourUsername
+https://github.com/nsr51324
 
 Hugging Face:
 https://huggingface.co/nsr51324
 
-LinkedIn:
-https://linkedin.com/in/YourLinkedIn
-
 ---
 
-# ⭐ If you found this project useful, consider giving it a star.
+⭐ If you like this project, don't forget to give it a Star.
